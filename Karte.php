@@ -128,6 +128,8 @@ class Karte {
 	 * @return Karte Current instance, for chaining
 	 */
 	public function parseURL($url) {
+		if (!$this->routes_path || !file_exists($this->routes_path) || !is_dir($this->routes_path)) throw new Exception("Routes directory does not exist or is undefined.");
+		
 		$this->original_url = parse_url($url, PHP_URL_PATH);  //grab only the path argument, ignoring the domain, query or fragments
 		
 		$chunks = $this->original_chunks = array_splice(explode('/',$this->original_url),1); //split the path by the slashes and strip the first value (which is always empty)
@@ -213,10 +215,8 @@ class Karte {
 		while (!empty($chunks)) {
 			
 			$route_name = implode('.',$chunks);
-			if (file_exists($this->routes_path . $route_name . '.php')) {
-				$found = true;
-				break;
-			}
+
+			if ($found = $this->checkRoute($route_name)) break;
 		
 			array_pop($chunks);
 		}
@@ -228,6 +228,16 @@ class Karte {
 		if ($found) return array($route_name, $arguments);
 		else return false;
 		
+	}
+	
+	/**
+	 * Internal function to test if a route exists.
+	 *
+	 * @param string $name Name of the route
+	 * @return boolean
+	 */
+	protected function checkRoute($name) {
+		return file_exists($this->routes_path . $name . '.php');
 	}
 	
 	
