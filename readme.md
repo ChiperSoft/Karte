@@ -190,13 +190,13 @@ After the url has been parsed you can alter the url's arguments by calling the `
 A route mapped from `http://localhost/alpha=1/beta=foo/delta=0/gamma/` could be rewritten like so:
 
 ```php
-    $newurl = $route->rewriteURL(array(
-    	'alpha'=>'100',
-    	'beta'=>false,
-    	'delta'=>'',
-    	'gamma'=>null,
-    	'lima'=>2
-    ));
+$newurl = $route->rewriteURL(array(
+	'alpha'=>'100',
+	'beta'=>false,
+	'delta'=>'',
+	'gamma'=>null,
+	'lima'=>2
+));
 ```
 
 This results in `$newurl` containing `/alpha=100/delta=/gamma/lima=2`
