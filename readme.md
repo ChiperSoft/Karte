@@ -99,7 +99,7 @@ The url `/` or `http://my.domain.com/` is interpreted by Karte as a call to the 
 The Karte base routing class is namespaced as `\ChiperSoft\Karte\Router` following the PSR-0 standard.  For the purposes of these examples we've imported the `Router` class under the alias of `Karte`, like so:
 
 ```php
-    use \ChiperSoft\Karte\Router as Karte;
+use \ChiperSoft\Karte\Router as Karte;
 ```
 
 If your server is configured with APC, you may wish to use the `CachedRouter` subclass in place of `Router`, which will catalog your routes folder and save the catalog in APC for faster access. This significantly reduces the number of I/O operations performed when routing a url.
@@ -109,25 +109,25 @@ If your server is configured with APC, you may wish to use the `CachedRouter` su
 The simplest way to run Karte is using the static initialization function, like so:
 
 ```php
-    Karte::Execute('/path/to/routes', true);
+Karte::Execute('/path/to/routes', true);
 ```
 
 This will create a Karte object and tell it to parse and execute the page request URL.  You can also chain off of this call:
 
 ```php
-    Karte::Execute('/path/to/routes')
-        ->indexPairedArguments()
-        ->parseCurrentRequest()
-        ->run();
+Karte::Execute('/path/to/routes')
+    ->indexPairedArguments()
+    ->parseCurrentRequest()
+    ->run();
 ```
 
 If you prefer the long-form method:
 
 ```php
-    $kroute = new Karte();
-    $kroute->setRoutesPath('/path/to/routes');
-    $kroute->parseURL('/foo=2/bar');
-    $kroute->run();
+$kroute = new Karte();
+$kroute->setRoutesPath('/path/to/routes');
+$kroute->parseURL('/foo=2/bar');
+$kroute->run();
 ```
 
 After calling `parseURL`, the matched route and defined arguments can be accessed with the following member variables:
