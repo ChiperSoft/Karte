@@ -1,6 +1,9 @@
 <?php 
 
-class Karte {
+namespace ChiperSoft\Karte;
+use \Exception;
+
+class Router {
 	protected $routes_path;
 	protected $filter_paired_arguments = true;
 	protected $pair_all_arguments = false;

@@ -1,6 +1,8 @@
 <?php 
 
-class KarteCached extends Karte {
+namespace Chipersoft\Karte;
+
+class CachedRouter extends Router {
 	
 	protected $routes = false;
 	protected $apc_key = false;
