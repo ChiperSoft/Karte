@@ -94,6 +94,18 @@ The url `/` or `http://my.domain.com/` is interpreted by Karte as a call to the 
 
 ##Usage
 
+###Namespacing
+
+The Karte base routing class is namespaced as `\ChiperSoft\Karte\Router` following the PSR-0 standard.  For the purposes of these examples we've imported the `Router` class under the alias of `Karte`, like so:
+
+```php
+    use \ChiperSoft\Karte\Router as Karte;
+```
+
+If your server is configured with APC, you may wish to use the `CachedRouter` subclass in place of `Router`, which will catalog your routes folder and save the catalog in APC for faster access. This significantly reduces the number of I/O operations performed when routing a url.
+
+###Examples
+
 The simplest way to run Karte is using the static initialization function, like so:
 
 ```php

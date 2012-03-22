@@ -1,6 +1,8 @@
 <?php 
 
-include '../Karte.php';
+include '../library/ChiperSoft/Karte/Router.php';
+
+use \ChiperSoft\Karte\Router as Karte;
 
 $o = new Karte(__DIR__.'/routes');
 //$o->indexPairedArguments();
